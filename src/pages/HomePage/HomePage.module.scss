@@ -1,0 +1,12 @@
+.home {
+  &__container {
+    max-width: 120rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 3rem 0;
+  }
+
+  &__form {
+    margin-bottom: 5rem;
+  }
+}

@@ -1,0 +1,20 @@
+.btn--primary {
+  padding: 1rem 2rem;
+  border: 1px solid #950740;
+  border-radius: 5px;
+  background-color: transparent;
+  color: inherit;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all .2s ease;
+
+  &:hover {
+    outline: none;
+    transform: translateY(-2px);
+    background-color: #950740;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}

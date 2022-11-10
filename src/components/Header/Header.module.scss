@@ -1,0 +1,48 @@
+.header {
+  box-shadow: 0 5px 5px 1px rgba(#c3073f, .2);
+
+  &__logo {
+    height: 6rem;
+    transition: all .2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+  
+  &__container {
+    max-width: 120rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    gap: 3rem;
+  }
+
+  &__link {
+    display: inline-block;
+    font-size: 2rem;
+    transition: all .2s ease;
+
+    &:hover,
+    &:focus-visible {
+      color: #c3073f;
+    }
+
+    &:active {
+      color: #950740;
+    }
+  }
+}

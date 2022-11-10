@@ -1,0 +1,1 @@
+export const API_URL = 'https://overwatch-hero-api.herokuapp.com/api/v1';
