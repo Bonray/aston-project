@@ -1,0 +1,38 @@
+.card {
+  &__container {
+    max-width: 120rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 3rem 0;
+  }
+
+  &__title {
+    margin-bottom: 2rem;
+    font-size: 3.6rem;
+  }
+
+  &__img {
+    width: 30rem;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    max-width: 70rem;
+  }
+
+  &__item {
+    font-size: 2rem;
+    line-height: 1.5;
+
+    span {
+      font-weight: 700;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+.cards {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    row-gap: 2rem;
+    flex-wrap: wrap;
+  }
+}

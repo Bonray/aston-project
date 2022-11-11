@@ -1,0 +1,38 @@
+.cards {
+  &__item {
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: all .2s ease;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    background-color: transparent;
+  }
+
+  &__icon {
+    width: 3rem;
+  }
+
+  &__img {
+    display: block;
+    background-color: #4e4e50;
+  }
+
+  &__desc {
+    padding: 3.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #6f2232;
+    font-size: 1.6rem;
+  }
+}
