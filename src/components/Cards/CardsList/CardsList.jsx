@@ -3,7 +3,7 @@ import { useGetHeroesQuery } from '../../../store/heroesApiSlice';
 import CardsItem from '../CardsItem/CardsItem';
 import Spinner from '../../UI/Spinner/Spinner';
 import ErrorMessage from '../../UI/ErrorMessage/ErrorMessage';
-import c from './CardsList.module.scss';
+import s from './CardsList.module.scss';
 
 const CardsList = () => {
   const { data: heroes = [], isLoading, isSuccess, isError, error } = useGetHeroesQuery();
