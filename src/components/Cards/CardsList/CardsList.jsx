@@ -11,7 +11,7 @@ const CardsList = () => {
   if (isLoading) return <Spinner />;
   if (isError) return <ErrorMessage>{error.error}</ErrorMessage>
   if (isSuccess) return (
-    <ul className={c.cards__list}>
+    <ul className={s.cards__list}>
       {heroes.map(hero => <CardsItem key={hero.id} hero={hero} />)}
     </ul>
   );

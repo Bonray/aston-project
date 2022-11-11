@@ -1,9 +1,9 @@
 import React from 'react';
-import c from './ErrorMessage.module.scss';
+import s from './ErrorMessage.module.scss';
 
 const ErrorMessage = (props) => {
   return (
-    <p className={c.error}>{props.children}</p>
+    <p className={s.error}>{props.children}</p>
   )
 }
 
