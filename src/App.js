@@ -1,10 +1,12 @@
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
-import ErrorPage from './pages/ErrorPage/ErrorPage';
 import HeroPage from './pages/HeroPage/HeroPage';
+import SignInPage from './pages/SignInPage/SignInPage';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import React from 'react';
 
 const App = () => {
   return (
@@ -13,6 +15,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/cards/:heroId" element={<HeroPage/>}/>
+        <Route path="/signIn" element={<SignInPage/>}/>
+        <Route path="/signUp" element={<SignUpPage/>}/>
         <Route path="*" element={<ErrorPage/>}/>
       </Routes>
       <Footer/>
