@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { API_URL } from "../config";
 
-export const heroesApiSlice = createApi({
+const heroesApiSlice = createApi({
   reducerPath: 'heroes',
   baseQuery: fetchBaseQuery({baseUrl: API_URL}),
   endpoints: builder => ({
@@ -15,3 +15,5 @@ export const heroesApiSlice = createApi({
 });
 
 export const { useGetHeroesQuery, useGetHeroQuery } = heroesApiSlice;
+
+export default heroesApiSlice;
