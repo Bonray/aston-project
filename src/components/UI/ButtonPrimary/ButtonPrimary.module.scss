@@ -10,11 +10,10 @@
 
   &:hover {
     outline: none;
-    transform: translateY(-2px);
     background-color: #950740;
   }
 
   &:active {
-    transform: translateY(1px);
+    background-color: #6f2232;
   }
 }

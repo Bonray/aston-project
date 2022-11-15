@@ -11,7 +11,7 @@ const SignInPage = () => {
         message="Don't have an account?"
         linkTitle="Sign Up"
         linkPath="/signUp"
-        authFunc={signInWithEmailAndPassword}
+        onSubmit={signInWithEmailAndPassword}
       />
     </section>
   );

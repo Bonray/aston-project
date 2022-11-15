@@ -21,7 +21,7 @@ const AuthForm = (props) => {
       setError('Both input fields must be filled out!');
     } else {
       const auth = getAuth();
-      props.authFunc(auth, email, password)
+      props.onSubmit(auth, email, password)
         .then(({ user }) => {
           dispatch(setUser({
             email: user.email,
