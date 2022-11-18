@@ -11,10 +11,10 @@ import s from './HomePage.module.scss';
 const HomePage = () => {
   const [searchParams] = useSearchParams();
 
-  const [curPage, setCurPage] = useState(1);
+  const [page, setPage] = useState(searchParams.get('page') || 1);
 
   const filters = {
-    page: curPage,
+    page: searchParams.get('page') || 1,
     name: searchParams.get('name'),
     status: searchParams.get('status'),
     gender: searchParams.get('gender'),
@@ -24,13 +24,13 @@ const HomePage = () => {
 
   return (
     <section className={s.home__container}>
-      <SearchBar />
+      <SearchBar setPage={setPage} />
       {isLoading && <Spinner />}
       {isError && <ErrorMessage>{error.error}</ErrorMessage>}
       {isSuccess && data.results.length > 0 &&
         <>
           <CardsList data={data} />
-          <Pagination pages={data.info.pages} page={curPage} setPage={setCurPage} />
+          <Pagination pages={data.info.pages} page={page} setPage={setPage} />
         </>
       }
     </section>

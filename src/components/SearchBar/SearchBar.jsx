@@ -7,16 +7,18 @@ import useDebounce from '../../hooks/useDebounce';
 import { API_URL, TIMEOUT_DELAY } from '../../config';
 import s from './SearchBar.module.scss';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [inputValue, setInputValue] = useState(searchParams.get('name') || '');
   const [suggestions, setSuggestions] = useState([]);
+  const [isSuggestionsListShown, setIsSuggestionsListShown] = useState(false);
   const [error, setError] = useState(null);
   const debouncedInputValue = useDebounce(inputValue, TIMEOUT_DELAY);
 
   const handleSumbit = (e) => {
     e.preventDefault();
+    setIsSuggestionsListShown(false);
     setSearchParams({ name: inputValue });
   }
 
@@ -29,13 +31,16 @@ const SearchBar = () => {
       return data.results.slice(0, 3);
     }
 
-    if (!debouncedInputValue) setSuggestions([]);
+    if (!debouncedInputValue) {
+      setSuggestions([]);
+      setError(null);
+    };
     if (debouncedInputValue) {
       fetchData()
         .then(data => setSuggestions(data))
         .catch(() => {
           setSuggestions([]);
-          setError('No matches found. Please, try something else.')
+          setError('No matches found. Please, try looking for something else.')
         });
     }
   }, [debouncedInputValue]);
@@ -43,12 +48,19 @@ const SearchBar = () => {
   return (
     <div className={s.form__container}>
       <form onSubmit={handleSumbit} className={s.form__form}>
-        <input type="text" value={inputValue} onChange={(e) => {setInputValue(e.target.value)}} className={s.form__input} placeholder="Search..." />
+        <input
+          type="text"
+          value={inputValue}
+          className={s.form__input}
+          placeholder="Search..."
+          onChange={(e) => {setInputValue(e.target.value)}}
+          onFocus={() => setIsSuggestionsListShown(true)}
+        />
         <ButtonPrimary type="submit">Search</ButtonPrimary>
 
         {error && <p className={s.form__error}>{error}</p>}
-        {suggestions.length > 0 &&
-          <ul className={s.form__list}>
+        {suggestions.length > 0 && isSuggestionsListShown &&
+          <ul className={s.form__list} onMouseLeave={() => setIsSuggestionsListShown(false)}>
              {suggestions.map(item => (
               <li key={item.id} className={s.form__item}>
                 <Link to={`/cards/${item.id}`} className={s.form__link}>
@@ -61,7 +73,7 @@ const SearchBar = () => {
         }
       </form>
 
-      <SearchFilters />
+      <SearchFilters setPage={props.setPage} />
     </div>
   );
 }

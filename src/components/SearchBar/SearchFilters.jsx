@@ -2,36 +2,29 @@ import React from "react";
 import { useSearchParams } from "react-router-dom";
 import s from './SearchFilters.module.scss';
 
-const SearchFilters = () => {
+const SearchFilters = (props) => {
   const [searchParams, setSearchParams] = useSearchParams();
   
   const handleStatusChange = (e) => {
     const value = e.target.value;
-    setSearchParams(prev => {
-      if (!value) {
-        const newSearchParams = Object.fromEntries(Object.entries(prev).filter(([key]) => key !== 'status'));
-        return newSearchParams;
-      } else {
-        return { ...prev, status: value };
-        // console.log(Object.assign(prev, { status: value }))
-        // return Object.assign(prev, { status: value });
-      }
-    });
+    searchParams.set('page', 1);
+    props.setPage(1);
+    
+    if (!value) searchParams.delete('status');
+    else searchParams.set('status', value);
+
+    setSearchParams(searchParams);
   }
 
   const handleGenderChange = (e) => {
     const value = e.target.value;
-    setSearchParams(prev => {
-      if (!value) {
-        const newSearchParams = Object.fromEntries(Object.entries(prev).filter(([key]) => key !== 'gender'));
-        return newSearchParams;
-      } else {
-        console.log(prev)
-        return { ...prev, gender: value };
-        // console.log(Object.assign(prev, { gender: value }))
-        // return Object.assign(prev, { gender: value });
-      }
-    });
+    searchParams.set('page', 1);
+    props.setPage(1);
+    
+    if (!value) searchParams.delete('gender');
+    else searchParams.set('gender', value);
+
+    setSearchParams(searchParams);
   }
 
   return (

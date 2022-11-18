@@ -1,10 +1,15 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
+import { useSearchParams } from "react-router-dom";
 import s from './Pagination.module.scss';
 
 const Pagination = (props) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const changePageHandler = (curPageData) => {
     props.setPage(curPageData.selected + 1);
+    searchParams.set('page', curPageData.selected + 1);
+    setSearchParams(searchParams);
   }
 
   return (
