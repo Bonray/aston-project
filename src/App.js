@@ -6,6 +6,7 @@ import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
 import SignInPage from './pages/SignInPage/SignInPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
+import ProtectedRoutes from './components/ProtectedRoutes';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
@@ -18,7 +19,9 @@ const App = () => {
         <Route path="/cards/:heroId" element={<HeroPage/>}/>
         <Route path="/signIn" element={<SignInPage/>}/>
         <Route path="/signUp" element={<SignUpPage/>}/>
-        <Route path="/favorites/" element={<FavoritesPage/>}/>
+        <Route element={<ProtectedRoutes/>}>
+          <Route path="/favorites/" element={<FavoritesPage/>}/>
+        </Route>
         <Route path="*" element={<ErrorPage/>}/>
       </Routes>
       <Footer/>

@@ -1,4 +1,4 @@
-.cards {
+.cards {  
   &__item {
     border-radius: 5px;
     overflow: hidden;
@@ -12,15 +12,19 @@
 
   &__img {
     display: block;
+    width: 100%;
+    object-fit: cover;
     background-color: #4e4e50;
   }
 
   &__desc {
-    padding: 3.5rem 0;
+    height: 10rem;
+    padding: 0 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #6f2232;
     font-size: 1.6rem;
+    text-align: center;
   }
 }

@@ -1,0 +1,31 @@
+.filters {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+
+  &__label {
+    display: flex;
+    align-items: center;
+    column-gap: 1.5rem;
+    font-size: 1.8rem;
+  }
+  
+  &__select {
+    padding: 1rem .5rem;
+    border: 1px solid #950740;
+    color: #fff;
+    font-size: 1.8rem;
+    background-color: transparent;
+    cursor: pointer;
+  
+    &:focus-visible {
+      border: 1px solid #c3073f;
+      outline: none;
+    }
+  }
+  
+  &__option {
+    font-size: 2rem;
+    background-color: #c3073f;
+  }
+}
