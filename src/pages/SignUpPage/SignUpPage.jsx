@@ -9,6 +9,7 @@ const SignUpPage = () => {
       <AuthForm
         title="Sign Up"
         message="Already have an account?"
+        authType="signUp"
         linkTitle="Sign In"
         linkPath="/signIn"
         onSubmit={createUserWithEmailAndPassword}

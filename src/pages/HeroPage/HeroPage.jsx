@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavorite, removeFavorite } from '../../store/favoritesSlice';
+import { addFavorite, removeFavorite } from '../../store/userSlice';
 import ErrorMessage from '../../components/UI/ErrorMessage/ErrorMessage';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import ButtonPrimary from '../../components/UI/ButtonPrimary/ButtonPrimary';
@@ -16,8 +16,8 @@ const HeroPage = () => {
   const { heroId } = useParams();
   const { data: hero, isFetching, isSuccess, isError, error } = useGetHeroQuery(heroId);
   
-  const favorites = useSelector(state => state.favorites);
-  const isFavorite = !!favorites.find(hero => hero.id === +heroId);
+  const favorites = useSelector(state => state.user.activeUser?.favorites);
+  const isFavorite = favorites ? !!favorites.find(id => id === heroId) : false;
 
   const { isAuth } = useAuth();
 
@@ -28,7 +28,7 @@ const HeroPage = () => {
 
   const dispatchAddHandler = () => {
     if (!isAuth) navigate('/signIn');
-    else dispatch(addFavorite(hero));
+    else dispatch(addFavorite(heroId));
   }
 
   if (isFetching) return <Spinner />
@@ -62,8 +62,8 @@ const HeroPage = () => {
             </ul>
 
             {isFavorite
-              ? <ButtonPrimary onClick={dispatchRemoveHandler}>Remove from favorites</ButtonPrimary>
-              : <ButtonPrimary onClick={dispatchAddHandler}>Add to favorites</ButtonPrimary>
+              ? <ButtonPrimary onClick={dispatchRemoveHandler}>Remove from Favorites</ButtonPrimary>
+              : <ButtonPrimary onClick={dispatchAddHandler}>Add to Favorites</ButtonPrimary>
             }
             
           </div>

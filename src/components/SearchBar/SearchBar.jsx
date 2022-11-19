@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { addHistory } from "../../store/userSlice";
 import axios from 'axios';
 import SearchFilters from './SearchFilters';
 import ButtonPrimary from '../UI/ButtonPrimary/ButtonPrimary';
@@ -8,18 +10,45 @@ import { API_URL, TIMEOUT_DELAY } from '../../config';
 import s from './SearchBar.module.scss';
 
 const SearchBar = (props) => {
+  const dispatch = useDispatch();
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [inputValue, setInputValue] = useState(searchParams.get('name') || '');
+  const [status, setStatus] = useState(searchParams.get('status') || '');
+  const [gender, setGender] = useState(searchParams.get('gender') || '');
   const [suggestions, setSuggestions] = useState([]);
   const [isSuggestionsListShown, setIsSuggestionsListShown] = useState(false);
   const [error, setError] = useState(null);
+
   const debouncedInputValue = useDebounce(inputValue, TIMEOUT_DELAY);
+
+  const collectSearchParamsData = () => {
+    const res = {};
+    for (const [key, value] of searchParams.entries()) {
+      res[key] = value;
+    }
+    return res;
+  }
 
   const handleSumbit = (e) => {
     e.preventDefault();
     setIsSuggestionsListShown(false);
-    setSearchParams({ name: inputValue });
+
+    searchParams.set('page', 1);
+    props.setPage(1);
+    
+    if (!status) searchParams.delete('status');
+    else searchParams.set('status', status);
+
+    if (!gender) searchParams.delete('gender');
+    else searchParams.set('gender', gender);
+
+    if (!inputValue) searchParams.delete('name');
+    else searchParams.set('name', inputValue);
+
+    dispatch(addHistory(collectSearchParamsData()));
+    setSearchParams(searchParams);
   }
 
   useEffect(() => {
@@ -47,6 +76,7 @@ const SearchBar = (props) => {
 
   return (
     <div className={s.form__container}>
+      <SearchFilters setPage={props.setPage} setStatus={setStatus} setGender={setGender} />
       <form onSubmit={handleSumbit} className={s.form__form}>
         <input
           type="text"
@@ -72,8 +102,6 @@ const SearchBar = (props) => {
           </ul>
         }
       </form>
-
-      <SearchFilters setPage={props.setPage} />
     </div>
   );
 }

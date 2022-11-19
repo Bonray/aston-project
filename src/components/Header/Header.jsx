@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { removeUser } from '../../store/userSlice';
+import { removeAuth } from '../../store/authSlice';
 import ButtonPrimary from '../UI/ButtonPrimary/ButtonPrimary';
 import s from './Header.module.scss';
 import logo from '../../assets/images/logo.png';
@@ -13,6 +14,7 @@ const Header = () => {
 
   const onSignOut = () => {
     dispatch(removeUser());
+    dispatch(removeAuth());
   }
 
   return (

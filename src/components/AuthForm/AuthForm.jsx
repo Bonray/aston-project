@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getAuth } from "firebase/auth";
 import { setUser } from '../../store/userSlice';
+import { setAuth } from '../../store/authSlice';
 import s from './AuthForm.module.scss';
 
 const AuthForm = (props) => {
@@ -21,16 +22,18 @@ const AuthForm = (props) => {
       setError('Both input fields must be filled out!');
     } else {
       const auth = getAuth();
-      props.onSubmit(auth, email, password)
+      props.onSubmit(auth, email, password, props.authType)
         .then(({ user }) => {
           dispatch(setUser({
             email: user.email,
-            token: user.accessToken,
-            id: user.uid
+            id: user.uid,
+            authType: props.authType
           }));
+          dispatch(setAuth());
           navigate('/');
         })
         .catch((err) => {
+          console.error(err);
           setError(err.message.replace('Firebase: ', ''));
         });
     }

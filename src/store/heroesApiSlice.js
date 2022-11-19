@@ -20,10 +20,16 @@ const heroesApiSlice = createApi({
     }),
     getHero: builder.query({
       query: heroId => `/character/${heroId}`,
+    }),
+    getFavoriteHeroes: builder.query({
+      query: heroesIds => `character/${heroesIds}`,
+      transformResponse(response) {
+        return Array.isArray(response) ? response : [response];
+      }
     })
   }),
 });
 
-export const { useGetHeroesQuery, useGetHeroQuery } = heroesApiSlice;
+export const { useGetHeroesQuery, useGetHeroQuery, useGetFavoriteHeroesQuery } = heroesApiSlice;
 
 export default heroesApiSlice;

@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import HeroPage from './pages/HeroPage/HeroPage';
 import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
+import HistoryPage from './pages/HistoryPage/HistoryPage';
 import SignInPage from './pages/SignInPage/SignInPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/signUp" element={<SignUpPage/>}/>
         <Route element={<ProtectedRoutes/>}>
           <Route path="/favorites/" element={<FavoritesPage/>}/>
+          <Route path="/history/" element={<HistoryPage/>}/>
         </Route>
         <Route path="*" element={<ErrorPage/>}/>
       </Routes>
