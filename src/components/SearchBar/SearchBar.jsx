@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { addHistory } from "../../store/userSlice";
 import axios from 'axios';
+import { ThemeContext } from '../../context/ThemeContext';
 import SearchFilters from './SearchFilters';
 import ButtonPrimary from '../UI/ButtonPrimary/ButtonPrimary';
 import useDebounce from '../../hooks/useDebounce';
@@ -10,6 +11,9 @@ import { API_URL, TIMEOUT_DELAY } from '../../config';
 import s from './SearchBar.module.scss';
 
 const SearchBar = (props) => {
+  const theme = useContext(ThemeContext);
+  const { isModeDark } = theme.state;
+
   const dispatch = useDispatch();
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -34,6 +38,7 @@ const SearchBar = (props) => {
   const handleSumbit = (e) => {
     e.preventDefault();
     setIsSuggestionsListShown(false);
+    if (!inputValue && !status && !gender) return;
 
     searchParams.set('page', 1);
     props.setPage(1);
@@ -75,7 +80,7 @@ const SearchBar = (props) => {
   }, [debouncedInputValue]);
 
   return (
-    <div className={s.form__container}>
+    <div className={`${s.form__container} ${isModeDark ? s['form__container--dark'] : ''}`}>
       <SearchFilters setPage={props.setPage} setStatus={setStatus} setGender={setGender} />
       <form onSubmit={handleSumbit} className={s.form__form}>
         <input

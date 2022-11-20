@@ -1,3 +1,5 @@
+@import '../../colors.scss';
+
 .form {
   &__container {
     display: flex;
@@ -14,7 +16,6 @@
   &__error {
     position: absolute;
     z-index: 2;
-    // bottom: -100%;
     width: 100%;
 
     &::before {
@@ -26,7 +27,7 @@
       height: 0; 
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
-      border-bottom: 10px solid #fff;
+      border-bottom: 10px solid $text-color-primary-dark;
     }
   }
 
@@ -40,15 +41,15 @@
   }
 
   &__item {
-    border: 1px solid #4e4e50;
-    background-color: #fff;
+    border: 1px solid $text-color-secondary-light;
+    background-color: $text-color-primary-dark;
     font-size: 1.8rem;
-    color: #1a1a1D;
+    color: $bg-color-dark;
     transition: all .2s ease;
 
     &:hover {
-      color: #fff;
-      background-color: #4e4e50;
+      color: $text-color-primary-dark;
+      background-color: $text-color-secondary-light;
     }
 
     &:first-of-type {
@@ -77,10 +78,10 @@
     bottom: -100%;
     transform: translateY(55%);
     padding: 2rem 1rem;
-    border: 1px solid #4e4e50;
+    border: 1px solid $text-color-secondary-light;
     font-size: 1.8rem;
     color: #c3073f;
-    background-color: #fff;
+    background-color: $text-color-primary-dark;
 
     &::before {
       top: -15%;
@@ -90,17 +91,17 @@
   &__input {
     margin-right: 2rem;
     border: none;
-    border-bottom: 1px solid #950740;
+    border-bottom: 1px solid $color-turquoise-dark;
     padding: 1rem .5rem;
     width: 50rem;
     background-color: transparent;
-    color: #fff;
+    color: $text-color-primary-dark;
     font-size: 1.8rem;
     transition: all .2s ease;
   
     &:focus-visible {
       outline: none;
-      border-bottom: 1px solid #c3073f;
+      border-bottom: 1px solid $color-turquoise-light;
     }
   }
 }

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { ThemeContext } from "../../context/ThemeContext";
 import s from './HistoryPage.module.scss';
 
 const serialize = function(obj) {
@@ -14,11 +15,14 @@ const serialize = function(obj) {
 }
 
 const HistoryPage = () => {
+  const theme = useContext(ThemeContext);
+  const { isModeDark } = theme.state;
+
   const history = useSelector(state => state.user.activeUser?.history) || [];
   console.log(history);
 
   return (
-    <section className={s.history}>
+    <section className={`${s.history} ${isModeDark ? s['history--dark'] : ''}`}>
       <div className={s.history__container}>
         <h2 className={s.history__heading}>History of Your Queries</h2>
         {history.length === 0 &&

@@ -1,4 +1,8 @@
+@import '../../colors.scss';
+
 .card {
+  background-color: $bg-color-light;
+
   &__container {
     max-width: 120rem;
     width: 100%;
@@ -40,5 +44,10 @@
     span {
       font-weight: 700;
     }
+  }
+
+  &--dark {
+    background-color: $bg-color-dark;
+    color: $text-color-primary-dark;
   }
 }

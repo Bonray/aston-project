@@ -1,3 +1,5 @@
+@import '../../colors.scss';
+
 .pagination {
   &__container {
     width: max-content;
@@ -10,17 +12,37 @@
   
   &__btn {
     padding: 1rem 1.5rem;
-    border: 1px solid #c3073f;
     border-radius: 2px;
+    border: 1px solid $color-turquoise-dark;
+    color: $text-color-light;
     font-size: 2rem;
-    color: #fff;
     background-color: transparent;
     cursor: pointer;
     transition: all .2s ease;
 
     &:hover {
-      background-color: #c3073f;
+      border: 1px solid $color-turquoise-light;
+      background-color: $color-turquoise-light;
     }
+
+    &--active {
+      background-color: $color-turquoise-dark;
+    }
+
+    &--dark {
+      border: 1px solid $color-turquoise-light;
+      color: $text-color-primary-dark;
+
+      &:hover {
+        background-color: $color-turquoise-light;
+      }
+      
+      &-active {
+        border: 1px solid $color-turquoise-dark;
+        background-color: $color-turquoise-dark;
+      }
+    }
+
 
     &--next,
     &--prev {
@@ -28,14 +50,10 @@
       cursor: pointer;
     }
 
-    &--active {
-      border: 1px solid #6f2232;
-      background-color: #6f2232;
-    }
 
     &--disabled {
       padding: 1rem 1.5rem;
-      color: #4e4e50;
+      color: $text-color-secondary-dark;
       font-size: 2rem;
     }
   }

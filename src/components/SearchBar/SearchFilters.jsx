@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useSearchParams } from "react-router-dom";
+import { ThemeContext } from "../../context/ThemeContext";
 import s from './SearchFilters.module.scss';
 
 const SearchFilters = (props) => {
   const [searchParams] = useSearchParams();
 
+  const theme = useContext(ThemeContext);
+  const { isModeDark } = theme.state;
+
   return (
-    <div className={s.filters}>
+    <div className={`${s.filters} ${isModeDark ? s['filters--dark'] : ''}`}>
       <label htmlFor="status" className={s.filters__label}>
         Status:
         <select

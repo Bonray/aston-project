@@ -1,6 +1,16 @@
+@import '../../colors.scss';
+
 .footer {
   width: 100%;
-  box-shadow: 0 -5px 5px 1px rgba(#c3073f, .2);
+  box-shadow: 0 -5px 5px 1px rgba($color-turquoise-dark, .2);
+  color: $text-color-light;
+  background-color: $bg-color-light;
+
+  &--dark {
+    box-shadow: 0 -5px 5px 1px rgba($color-turquoise-light, .2);
+    color: $text-color-primary-dark;
+    background-color: $bg-color-dark;
+  }
 
   &__container {
     max-width: 120rem;

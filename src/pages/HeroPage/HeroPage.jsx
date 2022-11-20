@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavorite, removeFavorite } from '../../store/userSlice';
+import { ThemeContext } from '../../context/ThemeContext';
 import ErrorMessage from '../../components/UI/ErrorMessage/ErrorMessage';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import ButtonPrimary from '../../components/UI/ButtonPrimary/ButtonPrimary';
@@ -21,6 +22,9 @@ const HeroPage = () => {
 
   const { isAuth } = useAuth();
 
+  const theme = useContext(ThemeContext);
+  const { isModeDark } = theme.state;
+
   const dispatchRemoveHandler = () => {
     if (!isAuth) navigate('/signIn');
     else dispatch(removeFavorite({ id: heroId }));
@@ -35,7 +39,7 @@ const HeroPage = () => {
   if (isError) return <ErrorMessage>{error.error}</ErrorMessage>
   if (isSuccess) {
     return (
-      <section>
+      <section className={`${s.card} ${isModeDark ? s['card--dark'] : ''}`}>
         <div className={s.card__container}>
           
           <h2 className={s.card__title}>{hero.name}</h2>

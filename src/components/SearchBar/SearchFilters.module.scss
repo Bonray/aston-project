@@ -1,3 +1,5 @@
+@import '../../colors.scss';
+
 .filters {
   display: flex;
   align-items: center;
@@ -12,20 +14,27 @@
   
   &__select {
     padding: 1rem .5rem;
-    border: 1px solid #950740;
-    color: #fff;
+    border: 1px solid $color-turquoise-dark;
+    color: $text-color-primary-dark;
     font-size: 1.8rem;
-    background-color: transparent;
+    background-color: $color-turquoise-dark;
     cursor: pointer;
   
     &:focus-visible {
-      border: 1px solid #c3073f;
+      border: 1px solid $color-turquoise-light;
       outline: none;
     }
   }
   
   &__option {
     font-size: 2rem;
-    background-color: #c3073f;
+    background-color: $color-turquoise-dark;
+  }
+
+  &--dark {
+    &__select {
+      background-color: transparent;
+      color: $text-color-light;
+    }
   }
 }

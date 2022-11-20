@@ -1,4 +1,9 @@
+@import '../../colors.scss';
+
 .history {
+  background-color: $bg-color-light;
+  color: $text-color-light;
+
   &__container {
     max-width: 120rem;
     width: 100%;
@@ -57,7 +62,7 @@
     width: 20rem;
     padding: 0 1rem;
     overflow: hidden;
-    border: 1px solid #950740;
+    border: 1px solid $color-turquoise-dark;
     border-radius: 2px;
     font-size: 1.6rem;
     white-space: nowrap;
@@ -65,6 +70,15 @@
     p {
       font-weight: 700;
       line-height: 2;
+    }
+  }
+
+  &--dark {
+    background-color: $bg-color-dark;
+    color: $text-color-primary-dark;
+
+    &__link {
+      border: 1px solid $color-turquoise-light;
     }
   }
 }

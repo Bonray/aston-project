@@ -1,7 +1,10 @@
+@import '../../../colors.scss';
+
 .cards {  
   &__item {
     border-radius: 5px;
     overflow: hidden;
+    color: $text-color-primary-dark;
     transition: all .2s ease;
 
     &:hover {
@@ -14,7 +17,6 @@
     display: block;
     width: 100%;
     object-fit: cover;
-    background-color: #4e4e50;
   }
 
   &__desc {
@@ -23,8 +25,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #6f2232;
+    background-color: $color-turquoise-dark;
     font-size: 1.6rem;
     text-align: center;
+    
+    &--dark {
+      background-color: $text-color-secondary-light;
+      color: $text-color-primary-dark;
+    }
   }
 }
