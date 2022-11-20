@@ -8,7 +8,7 @@
 
 - Пишем функциональные компоненты c хуками в приоритете над классовыми.
 - Есть четкое разделение на умные и глупые компоненты. [ButtonPrimary](./src/components/UI/ButtonPrimary), [ErrorMessage](./src/components/UI/ErrorMessage/ErrorMessage.jsx), [Spinner](./src/components/UI/Spinner/Spinner.jsx), [SearchBar](./src/components/SearchBar/SearchBar.jsx), [Pagination](./src/components/Pagination/Pagination.jsx)
-- Есть рендеринг списков [CardsList](./src/components/CardsList/CardsList.jsx), [FavoritesPage](./src/pages/FavoritesPage/FavoritesPage.jsx),[HistoryPage](./src/pages/HistoryPage/HistoryPage.jsx)
+- Есть рендеринг списков [CardsList](./src/components/Cards/CardsList/CardsList.jsx), [FavoritesPage](./src/pages/FavoritesPage/FavoritesPage.jsx),[HistoryPage](./src/pages/HistoryPage/HistoryPage.jsx)
 - Реализована хотя бы одна форма [AuthForm](./src/components/AuthForm/AuthForm.jsx)
 - Есть применение Контекст API [ThemeContext](./src/context/ThemeContext.js)
 - Есть применение предохранителя [ErrorBoundary](./src/components/ErrorBoundary.jsx)
