@@ -14,7 +14,7 @@
 - Есть применение предохранителя [ErrorBoundary](./src/components/ErrorBoundary.jsx)
 - Есть хотя бы один кастомный хук [hooks](./src/hooks)
 - Хотя бы несколько компонентов используют PropTypes [ErrorBoundary](./src/components/ErrorBoundary.jsx), [ErrorMessage](./src/components/UI/ErrorMessage/ErrorMessage.jsx)
-- Поиск не должен триггерить много запросов к серверу: реализовано с помощью библиотеки react-debounce-input в компоненте [SearchBar](./src/components/SearchBar/SearchBar.jsx)
+- Поиск не должен триггерить много запросов к серверу [SearchBar](./src/components/SearchBar/SearchBar.jsx)
 - Есть применение lazy + Suspense: [App](./src/App.js)
 
 ### Redux
