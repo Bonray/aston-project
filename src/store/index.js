@@ -11,13 +11,14 @@ import {
   REGISTER,
 } from 'redux-persist'
 import heroesApiSlice from "./heroesApiSlice";
-import userReducer from "./userSlice";
-import favoritesSlice from "./favoritesSlice";
+import authSlice from "./authSlice";
+import userSlice from "./userSlice";
+import loggerMiddleware from "./middlewares/logger";
 
 const rootReducer = combineReducers({
   heroes: heroesApiSlice,
-  user: userReducer,
-  favorites: favoritesSlice,
+  auth: authSlice,
+  user: userSlice,
   [heroesApiSlice.reducerPath]: heroesApiSlice.reducer,
 });
 
@@ -34,7 +35,7 @@ const store = configureStore({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
-  }).concat(heroesApiSlice.middleware),
+  }).concat(heroesApiSlice.middleware, loggerMiddleware),
 });
 
 export const persistor = persistStore(store);

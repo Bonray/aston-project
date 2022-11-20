@@ -1,8 +1,39 @@
+@import "../../colors";
+
 .header {
-  box-shadow: 0 5px 5px 1px rgba(#c3073f, .2);
+  position: relative;
+  box-shadow: 0 5px 5px 1px rgba($color-turquoise-dark, .2);
+  background-color: $bg-color-light;
+
+  &--dark {
+    box-shadow: 0 5px 5px 1px rgba($color-turquoise-light, .2);
+    color: $text-color-primary-dark;
+    background-color: $bg-color-dark;
+
+    & .nav__link {
+      &:hover,
+      &:focus-visible {
+        color: $color-turquoise-light;
+      }
+  
+      &:active {
+        color: $color-turquoise-dark;
+      }
+    }
+  }
+ 
+  &__container {
+    max-width: 120rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem 0;
+    display: flex;
+    align-items: center;
+  }
 
   &__logo {
-    height: 6rem;
+    height: 7rem;
+    margin-right: 3.5rem;
     transition: all .2s ease;
 
     &:hover {
@@ -12,16 +43,6 @@
     &:active {
       transform: translateY(1px);
     }
-  }
-  
-  &__container {
-    max-width: 120rem;
-    width: 100%;
-    margin: 0 auto;
-    padding: 2rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
 }
 
@@ -43,11 +64,11 @@
 
     &:hover,
     &:focus-visible {
-      color: #c3073f;
+      color: $color-turquoise-dark;
     }
 
     &:active {
-      color: #950740;
+      color: $color-turquoise-light;
     }
   }
 }

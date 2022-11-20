@@ -1,12 +1,18 @@
+@import '../../colors.scss';
+
 .home {
+  color: $text-color-light;
+  background-color: $bg-color-light;
+  
+  &--dark {
+    color: $text-color-primary-dark;
+    background-color: $bg-color-dark;
+  }
+
   &__container {
     max-width: 120rem;
     width: 100%;
     margin: 0 auto;
     padding: 3rem 0;
-  }
-
-  &__form {
-    margin-bottom: 5rem;
   }
 }

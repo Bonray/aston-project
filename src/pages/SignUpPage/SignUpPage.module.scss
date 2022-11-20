@@ -1,3 +1,10 @@
+@import '../../colors.scss';
+
 .sign-up {
   padding: 4rem 0;
+  background-color: $bg-color-light;
+
+  &--dark {
+    background-color: $bg-color-dark;
+  }
 }

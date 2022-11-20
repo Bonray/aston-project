@@ -1,0 +1,65 @@
+@import '../../colors.scss';
+
+.pagination {
+  &__container {
+    width: max-content;
+    margin: 0 auto;
+    padding: 3rem 0;
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+  }
+  
+  &__btn {
+    padding: 1rem 1.5rem;
+    border-radius: 2px;
+    border: 1px solid $color-turquoise-dark;
+    color: $text-color-light;
+    font-size: 2rem;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all .2s ease;
+
+    &:hover {
+      border: 1px solid $color-turquoise-light;
+      background-color: $color-turquoise-light;
+    }
+
+    &--active {
+      background-color: $color-turquoise-dark;
+    }
+
+    &--dark {
+      border: 1px solid $color-turquoise-light;
+      color: $text-color-primary-dark;
+
+      &:hover {
+        background-color: $color-turquoise-light;
+      }
+      
+      &-active {
+        border: 1px solid $color-turquoise-dark;
+        background-color: $color-turquoise-dark;
+      }
+    }
+
+
+    &--next,
+    &--prev {
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+
+    &--disabled {
+      padding: 1rem 1.5rem;
+      color: $text-color-secondary-dark;
+      font-size: 2rem;
+    }
+  }
+
+  &__break {
+    font-size: 2rem;
+    letter-spacing: 3px;
+  }
+}

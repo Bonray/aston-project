@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getAuth } from "firebase/auth";
 import { setUser } from '../../store/userSlice';
+import { setAuth } from '../../store/authSlice';
+import { ThemeContext } from '../../context/ThemeContext';
 import s from './AuthForm.module.scss';
 
 const AuthForm = (props) => {
+  const theme = useContext(ThemeContext);
+  const { isModeDark } = theme.state;
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -21,23 +26,25 @@ const AuthForm = (props) => {
       setError('Both input fields must be filled out!');
     } else {
       const auth = getAuth();
-      props.onSubmit(auth, email, password)
+      props.onSubmit(auth, email, password, props.authType)
         .then(({ user }) => {
           dispatch(setUser({
             email: user.email,
-            token: user.accessToken,
-            id: user.uid
+            id: user.uid,
+            authType: props.authType
           }));
+          dispatch(setAuth());
           navigate('/');
         })
         .catch((err) => {
+          console.error(err);
           setError(err.message.replace('Firebase: ', ''));
         });
     }
   }
 
   return (
-    <form className={s.form} onSubmit={submitHandler}>
+    <form className={`${s.form} ${isModeDark ? s['form--dark'] : ''}`} onSubmit={submitHandler}>
       <h2 className={s.form__heading}>{props.title}</h2>
 
       <label htmlFor="email" className={s.form__label}>

@@ -1,10 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isAuth: false,
-  email: null,
-  token: null,
-  id: null
+  users: [],
+  activeUser: null,
 };
 
 const userSlice = createSlice({
@@ -12,20 +10,41 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser(state, action) {
-      state.isAuth = true;
-      state.email = action.payload.email;
-      state.token = action.payload.token;
-      state.id = action.payload.id;
+      if (action.payload.authType === 'signUp') {
+        const newUser = {
+          email: action.payload.email,
+          id: action.payload.id,
+          favorites: [],
+          history: []
+        }
+        state.users.push(newUser);
+        state.activeUser = newUser;
+      } else if (action.payload.authType === 'signIn') {
+        state.activeUser = state.users.find(user => user.id === action.payload.id);
+      }
     },
     removeUser(state) {
-      state.isAuth = false;
-      state.email = null;
-      state.token = null;
-      state.id = null;
+      state.activeUser = null;
+    },
+    addFavorite(state, action) {
+      const user = state.users.find(user => user.id === state.activeUser.id);
+      user.favorites.push(action.payload);
+      state.activeUser.favorites.push(action.payload);
+    },
+    removeFavorite(state, action) {
+      const user = state.users.find(user => user.id === state.activeUser.id);
+      const idx = state.activeUser.favorites.findIndex(item => item.id === +action.payload.id);
+      state.activeUser.favorites.splice(idx, 1);
+      user.favorites.splice(idx, 1);
+    },
+    addHistory(state, action) {
+      const user = state.users.find(user => user.id === state.activeUser.id);
+      user.history.push(action.payload);
+      state.activeUser.history.push(action.payload);
     }
   },
 });
 
-export const { setUser, removeUser } = userSlice.actions;
+export const { setUser, removeUser, addFavorite, removeFavorite, addHistory } = userSlice.actions;
 
 export default userSlice.reducer;

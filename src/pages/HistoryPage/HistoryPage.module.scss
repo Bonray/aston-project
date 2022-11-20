@@ -1,0 +1,84 @@
+@import '../../colors.scss';
+
+.history {
+  background-color: $bg-color-light;
+  color: $text-color-light;
+
+  &__container {
+    max-width: 120rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 3rem 0;
+  }
+
+  &__heading {
+    margin-bottom: 2rem;
+    font-size: 3.6rem;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 35rem;
+  }
+
+  &__text {
+    margin-bottom: 7rem;
+    font-size: 3rem;
+    line-height: 1.5;
+  }
+
+  &__link--large {
+    display: inline-block;
+    margin-bottom: 25rem;
+    font-size: 2.4rem;
+    text-decoration: underline;
+    transition: all .2s ease;
+
+    &:hover {
+      color: #c3073f;
+    }
+  }
+
+  &__item {
+    transition: all .2s ease;
+
+    &:hover,
+    &:focus-visible {
+      transform: translateY(-2px);
+    }
+    
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    height: 11rem;
+    width: 20rem;
+    padding: 0 1rem;
+    overflow: hidden;
+    border: 1px solid $color-turquoise-dark;
+    border-radius: 2px;
+    font-size: 1.6rem;
+    white-space: nowrap;
+
+    p {
+      font-weight: 700;
+      line-height: 2;
+    }
+  }
+
+  &--dark {
+    background-color: $bg-color-dark;
+    color: $text-color-primary-dark;
+
+    &__link {
+      border: 1px solid $color-turquoise-light;
+    }
+  }
+}

@@ -1,4 +1,8 @@
+@import '../../colors.scss';
+
 .card {
+  background-color: $bg-color-light;
+
   &__container {
     max-width: 120rem;
     width: 100%;
@@ -18,11 +22,12 @@
     justify-items: start;
     align-items: start;
     column-gap: 15rem;
+    row-gap: 2rem;
   }
   
   &__img {
     grid-row: 1 / -1;
-    width: 30rem;
+    height: 100%;
   }
 
   &__list {
@@ -39,5 +44,10 @@
     span {
       font-weight: 700;
     }
+  }
+
+  &--dark {
+    background-color: $bg-color-dark;
+    color: $text-color-primary-dark;
   }
 }

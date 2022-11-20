@@ -1,12 +1,14 @@
+@import '../../../colors.scss';
+
+.spinner-wrapper {
+  margin: 0 auto;
+  padding: 5rem 0 30rem;
+  width: max-content;
+}
+
 .spinner {
   width: 80px;
   height: 80px;
-  
-  &-wrapper {
-    margin: 0 auto;
-    padding: 5rem 0 30rem;
-    width: max-content;
-  }
 
   &::after {
     content: ' ';
@@ -15,8 +17,8 @@
     height: 64px;
     margin: 8px;
     border-radius: 50%;
-    border: 6px solid #fff;
-    border-color: #fff transparent #fff transparent;
+    border: 6px solid $color-turquoise-dark;
+    border-color: $color-turquoise-dark transparent $color-turquoise-dark transparent;
     animation: spinner 1.2s linear infinite;
   }
 }
@@ -28,4 +30,9 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.spinner-wrapper--dark .spinner::after {
+  border: 6px solid $text-color-primary-dark;
+  border-color: $text-color-primary-dark transparent $text-color-primary-dark transparent;
 }

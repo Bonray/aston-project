@@ -1,7 +1,14 @@
+@import '../../../colors.scss';
+
 .error {
   width: max-content;
   margin: 0 auto;
   padding: 3rem 0 20rem;
   font-size: 2rem;
   font-weight: 600;
+  color: $text-color-light;
+
+  &--dark {
+    color: $text-color-primary-dark;
+  }
 }

@@ -1,19 +1,29 @@
+@import '../../../colors.scss';
+
 .btn--primary {
   padding: 1rem 2rem;
-  border: 1px solid #950740;
   border-radius: 5px;
-  background-color: transparent;
+  border: 1px solid $color-turquoise-dark;
+  background-color: $color-turquoise-dark;
   color: inherit;
   font-size: 1.8rem;
+  color: $text-color-primary-dark;
   cursor: pointer;
   transition: all .2s ease;
 
+  &-dark {
+    border: 1px solid $color-turquoise-light;
+    background-color: transparent;
+  }
+
   &:hover {
     outline: none;
-    background-color: #950740;
+    border: 1px solid $color-turquoise-light;
+    background-color: $color-turquoise-light;
   }
 
   &:active {
-    background-color: #6f2232;
+    border: 1px solid $text-color-secondary-light;
+    background-color: $text-color-secondary-light;
   }
 }

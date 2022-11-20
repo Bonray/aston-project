@@ -1,0 +1,107 @@
+@import '../../colors.scss';
+
+.form {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5rem;
+  }
+
+  &__form {
+    position: relative;
+  }
+
+  &__list,
+  &__error {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 1rem;
+      display: block;
+      width: 0; 
+      height: 0; 
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid $text-color-primary-dark;
+    }
+  }
+
+  &__list {
+    bottom: -40%;
+    transform: translateY(100%);
+
+    &::before {
+      top: -9px;
+    }
+  }
+
+  &__item {
+    border: 1px solid $text-color-secondary-light;
+    background-color: $text-color-primary-dark;
+    font-size: 1.8rem;
+    color: $bg-color-dark;
+    transition: all .2s ease;
+
+    &:hover {
+      color: $text-color-primary-dark;
+      background-color: $text-color-secondary-light;
+    }
+
+    &:first-of-type {
+      border-bottom: none;
+    }
+
+    &:last-of-type {
+      border-top: none;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    column-gap: 2rem;
+    width: 100%;
+  }
+
+  &__img {
+    display: block;
+    object-fit: cover;
+    width: 10rem;
+  }
+
+  &__error {
+    bottom: -100%;
+    transform: translateY(55%);
+    padding: 2rem 1rem;
+    border: 1px solid $text-color-secondary-light;
+    font-size: 1.8rem;
+    color: #c3073f;
+    background-color: $text-color-primary-dark;
+
+    &::before {
+      top: -15%;
+    }
+  }
+  
+  &__input {
+    margin-right: 2rem;
+    border: none;
+    border-bottom: 1px solid $color-turquoise-dark;
+    padding: 1rem .5rem;
+    width: 50rem;
+    background-color: transparent;
+    color: $text-color-primary-dark;
+    font-size: 1.8rem;
+    transition: all .2s ease;
+  
+    &:focus-visible {
+      outline: none;
+      border-bottom: 1px solid $color-turquoise-light;
+    }
+  }
+}
